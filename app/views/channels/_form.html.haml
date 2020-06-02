@@ -1,0 +1,17 @@
+-# frozen_string_literal: true
+= simple_form_for(@channel) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    - if @channel.logo.attached?
+      - title = @channel.logo.attachment.blob.filename.to_s
+    = f.input :logo, as: :image_preview,
+        input_html: {accept: "image/*", title: title}
+    = f.input :language, collection: locales_for_select, prompt: true
+    = f.input :home_url
+    = f.input :timezone, as: :time_zone, prompt: t('.timezone')
+
+  .form-actions
+    = f.button :submit

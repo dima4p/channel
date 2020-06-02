@@ -1,0 +1,35 @@
+--- 
+de: 
+  activerecord: 
+    attributes: 
+      channel: 
+        home_url: "Startseite Url"
+        language: Sprache
+        logo: Logo
+        name: Name
+        timezone: Zeitzone
+    models:
+      channel: Kanal
+  channels: 
+    edit: 
+      title: "Bearbeitung des Kanals"
+    form: 
+      channel: Kanal
+      timezone: "Wählen Sie Ihre Zeitzone"
+    index:
+      confirm: "Sind Sie sicher, dass Sie den Kanal löschen möchten?"
+      empty: "Kein Kanal gefunden"
+      new_channel: "Hinzufügen einen neuen Kanal"
+      title: "Auflistung der Kanäle"
+    new:
+      title: "Hinzufügen eines neuen Kanals"
+    show:
+      title: "Kanal \"%{name}\""
+    was_created: "Kanal ist erfolgreich hinzugefügt"
+    was_deleted: "Kanal ist erfolgreich gelöscht"
+    was_updated: "Kanal ist erfolgreich aktualisiert"
+  helpers:
+    submit: 
+      channel: 
+        create: "Kanal anlegen"
+        update: "Kanal aktualisieren"

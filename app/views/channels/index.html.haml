@@ -1,0 +1,69 @@
+- title t('.title')
+
+- if can? :new, Channel
+  %p.nav= link_to t('.new_channel'), new_channel_path, class: 'new'
+
+- if @channels.limit(1).size > 0
+  - if @grid
+    = grid @grid do |g|
+      - g.column name: Channel.human_attribute_name(:logo),
+        class: 'logo center' do |channel|
+        - image_tag channel.logo, alt: channel.name rescue nil
+      - g.column name: Channel.human_attribute_name(:name),
+        class: 'name', attribute: 'name' do |channel|
+        - channel.name
+      - g.column name: Channel.human_attribute_name(:language),
+        class: 'language', attribute: 'language',
+            custom_filter: locales_for_select do |channel|
+        - channel.language
+      - g.column name: Channel.human_attribute_name(:home_url),
+        class: 'home_url', attribute: 'home_url' do |channel|
+        - link_to channel.home_url, channel.home_url, target: 'blank'
+      - g.column name: Channel.human_attribute_name(:timezone),
+          custom_filter: ActiveSupport::TimeZone.all.map{|tz| [tz.to_s, tz.name]},
+          attribute: 'timezone' do |channel|
+        - ActiveSupport::TimeZone.new(channel.timezone.to_s).to_s
+      - g.column do |channel|
+        - if can? :show, channel
+          - link_to t('show'), channel, class: 'show'
+      - g.column do |channel|
+        - if can? :edit, channel
+          - link_to t('edit'), edit_channel_path(channel), class: 'edit'
+      - g.column do |channel|
+        - if can? :destroy, channel
+          - link_to t('destroy'), channel,
+            data: {confirm: t('.confirm', default: 'Are you sure?')},
+            method: :delete, class: 'destroy'
+  -else
+    %table
+      %thead
+        %tr
+          %th= Channel.human_attribute_name :logo
+          %th= Channel.human_attribute_name :name
+          %th= Channel.human_attribute_name :language
+          %th= Channel.human_attribute_name :home_url
+          %th= Channel.human_attribute_name :timezone
+          %th{colspan: 3}= t 'actions'
+
+      %tbody
+        - @channels.each do |channel|
+          %tr{class: cycle(:odd, :even)}
+            %td.logo= image_tag channel.logo, alt: channel.name
+            %td.name= channel.name
+            %td.language= channel.language
+            %td.home_url= link_to channel.home_url, channel.home_url, target: 'blank'
+            %td= ActiveSupport::TimeZone.new(channel.timezone.to_s).to_s
+            %td.action
+              - if can? :show, channel
+                = link_to t('show'), channel, class: 'show'
+            %td.action
+              - if can? :edit, channel
+                = link_to t('edit'), edit_channel_path(channel), class: 'edit'
+            %td.action
+              - if can? :destroy, channel
+                = link_to t('destroy'), channel,
+                  data: {confirm: t('.confirm', default: 'Are you sure?')},
+                  method: :delete, class: 'destroy'
+- else
+  .empty
+    = t '.empty'

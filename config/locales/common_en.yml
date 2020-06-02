@@ -1,0 +1,18 @@
+--- 
+en:
+  Back: Back
+  actions: Actions
+  application_name: "test"
+  are_you_sure: 'Are you sure?'
+  back: 'Back to list'
+  cancel: Cancel
+  copy: Copy
+  destroy: Delete
+  edit: Edit
+  edit_profile: "Edit Profile"
+  login: Login
+  logout: Logout
+  none_specified: "None specified"
+  show: Show
+  sign_up: "Sign up"
+  you_are_logged_as: "You are logged as %{name}"

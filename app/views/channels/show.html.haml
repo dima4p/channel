@@ -1,0 +1,20 @@
+- title t '.title', name: @channel.name
+
+%p.nav
+  - if can? :index, Channel
+    = link_to t('back'), channels_path, class: 'index'
+  - if can? :edit, @channel
+    = link_to t('edit'), edit_channel_path(@channel), class: 'edit'
+
+%dl
+  %dt= Channel.human_attribute_name :logo
+  %dd.logo= image_tag @channel.logo, alt: @channel.name
+  %dt= Channel.human_attribute_name :name
+  %dd.name= @channel.name
+  %dt= Channel.human_attribute_name :language
+  %dd.language= @channel.language
+  %dt= Channel.human_attribute_name :home_url
+  %dd.home_url= link_to @channel.home_url, @channel.home_url, target: 'blank'
+  - if can? :show_timezone, @channel
+    %dt= User.human_attribute_name :timezone
+    %dd= ActiveSupport::TimeZone.new(@channel.timezone.to_s).to_s

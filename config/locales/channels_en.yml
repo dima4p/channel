@@ -1,0 +1,35 @@
+---
+en:
+  activerecord:
+    models:
+      channel: "Channel"
+    attributes:
+      channel: 
+        home_url: "Home url"
+        name: "Name"
+        language: "Language"
+        logo: Logo
+        timezone: Timezone
+  helpers:
+    submit:
+      channel:
+        create: "Create channel"
+        update: "Update channel"
+  channels:
+    edit:
+      title: "Editing of the channel"
+    form:
+      channel: "Channel"
+      timezone: "Choose your timezone"
+    index:
+      confirm: "Are you sure you want to delete the channel?"
+      empty: "No channels found"
+      new_channel: "Add a new channel"
+      title: "Listing of channels"
+    new:
+      title: "Adding a new channel"
+    show:
+      title: "Channel \"%{name}\""
+    was_created: "Channel was successfully added"
+    was_deleted: "Channel was successfully deleted"
+    was_updated: "Channel was successfully updated"

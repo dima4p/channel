@@ -1,0 +1,9 @@
+- title t('.title')
+
+%p.nav
+  - if can? :index, Channel
+    = link_to t('back'), channels_path, class: 'index'
+  - if can? :show, @channel
+    = link_to t('show'), @channel, class: 'show'
+
+= render 'form', channel: @channel

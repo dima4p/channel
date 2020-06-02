@@ -1,0 +1,18 @@
+--- 
+de: 
+  Back: Zurück
+  actions: Aktionen
+  application_name: "test"
+  are_you_sure: "Sind Sie sicher?"
+  back: "Zurück zur Liste"
+  cancel: Abbrechen
+  copy: Kopieren
+  destroy: Löschen
+  edit: Bearbeiten
+  edit_profile: "Profil bearbeiten"
+  login: Anmelden
+  logout: Abmelden
+  none_specified: "Wurde nicht angegeben"
+  show: Anzeigen
+  sign_up: Registrieren
+  you_are_logged_as: "Sie sind als %{name} angemeldet"
